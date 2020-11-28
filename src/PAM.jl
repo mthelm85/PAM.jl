@@ -1,7 +1,5 @@
 module PAM
 
-using Distances
-
 export pam
 
 function build_phase(D,k)
