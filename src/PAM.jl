@@ -13,7 +13,7 @@ function build_phase(D,k)
         for a in 1:N
             td = 0.0
             for i in 1:N
-                td += minimum(vcat(D[a,i],[D[i,m] for m in medoids]...))
+                td += reduce(min, (D[i,m] for m in medoids), init=D[a,i])
             end
             TD[a] = td
         end
