@@ -24,22 +24,26 @@ function build_phase(D,k)
 end
 
 function swap_phase(D,k,M)
+    M = copy(M)
+    Mⱼ = similar(M)
     # Perform clustering
-    assignments = [findmin([D[i,m] for m in M])[2] for i in 1:size(D,1)]
-
-    Mⱼ = Vector{Int}(undef,k)
-
-    # Find minimum sum for each cluster (i.e. find the best medoid)
-    for j in 1:k
-        cluster = assignments .== j
-        distances = sum(D[cluster, cluster][:,i] for i in 1:sum(cluster))
-        Mⱼ[j] = findfirst(x -> x == findmin(distances)[2], cumsum(cluster))
-    end
-
-    if sort(M) == sort(Mⱼ) 
-        return (medoids=Mⱼ,assignments=assignments)
-    else
-        swap_phase(D,k,Mⱼ)
+    assignments = Int[findmin(view(D, i,M))[2] for i in axes(D,1)]
+    cumulative = similar(assignments)
+    while true
+        # Find minimum sum for each cluster (i.e. find the best medoid)
+        for i in 1:k
+            cluster = assignments .== i
+            cumsum!(cumulative, cluster)
+            D_slice = view(D, cluster, cluster)
+            distances = sum(@view D_slice[:,i] for i in 1:last(cumulative))
+            smallest_distance_idx = findmin(distances)[2]
+            Mⱼ[i] = findfirst(==(smallest_distance_idx), cumulative)::Int
+        end
+        if sort(M) == sort(Mⱼ)
+            return (medoids=M,assignments=assignments)
+        else
+            M,Mⱼ = Mⱼ,M
+        end
     end
 end
 
