@@ -27,13 +27,13 @@ function swap_phase(D,k,M)
     # Perform clustering
     assignments = [findmin([D[i,m] for m in M])[2] for i in 1:size(D,1)]
 
-    # M₁
     Mⱼ = Vector{Int}(undef,k)
 
     # Find minimum sum for each cluster (i.e. find the best medoid)
     for j in 1:k
-        distances = sum(D[assignments .== j, assignments .== j][:,i] for i in 1:sum(assignments .== j))
-        Mⱼ[j] = findfirst(x -> x == findmin(distances)[2], cumsum(assignments .== j))
+        cluster = assignments .== j
+        distances = sum(D[cluster, cluster][:,i] for i in 1:sum(cluster))
+        Mⱼ[j] = findfirst(x -> x == findmin(distances)[2], cumsum(cluster))
     end
 
     if sort(M) == sort(Mⱼ) 
