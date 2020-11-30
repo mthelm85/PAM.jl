@@ -40,6 +40,8 @@ results = pam(D,k)
 To visualize:
 
 ```julia
+using StatsPlots
+
 scatter(
     iris[:,3],
     iris[:,4],
