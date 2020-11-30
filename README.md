@@ -38,7 +38,16 @@ results = pam(D,k)
 
 I've compared the results of the cluster quality from this implementation to the k-Medoids implementations in Clustering.jl as well as the `pam` function from R's `cluster` package. To compare the quality of the clusters, clustering was performed 1,000 times for different size matrices and values of `k`. At each iteration, the mean silhouette score was computed. Finally, the mean of all 1,000 mean silhouette scores was computed:
 
+![1](https://github.com/mthelm85/PAM.jl/blob/main/img/k2m2n10.png?raw=true)
 
+![2](https://github.com/mthelm85/PAM.jl/blob/main/img/k4m5n50.png?raw=true)
+
+![3](https://github.com/mthelm85/PAM.jl/blob/main/img/k10m10n200.png?raw=true)
+
+![4](https://github.com/mthelm85/PAM.jl/blob/main/img/k25m20n400.png?raw=true)
+
+
+R's `cluster` package provides the best results across all values tested while PAM.jl provides the second-best results. The performance of Clustering.jl is far better than either the R package or PAM.jl but clustering quality is significantly worse at higher values of `k` with higher dimensionsal and larger data sets (at least when generated randomly).
 
 The comparisons were generated with the following code:
 
