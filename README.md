@@ -41,7 +41,7 @@ results = pam(D,k)
 
 ### Cluster Quality Comparison
 
-I've compared the results of the cluster quality from this implementation to the k-Medoids implementations in Clustering.jl as well as the `pam` function from R's `cluster` package. To compare the quality of the clusters, clustering was performed 1,000 times for different size matrices and values of `k`. At each iteration, the mean silhouette score was computed. Finally, the mean of all 1,000 mean silhouette scores was computed:
+I've compared the results of the cluster quality from this implementation to the k-Medoids implementations in Clustering.jl as well as the `pam` function from R's `cluster` package. To compare the quality of the clusters, clustering was performed 1,000 times on randomly-generated matrices of different sizes and values of `k`. At each iteration, the mean silhouette score was computed. Finally, the mean of all 1,000 mean silhouette scores was computed:
 
 ![1](https://github.com/mthelm85/PAM.jl/blob/main/img/k2m2n10.png?raw=true)
 
