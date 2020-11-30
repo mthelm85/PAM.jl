@@ -41,7 +41,7 @@ results = pam(D,k)
 
 ### Cluster Quality Comparison
 
-I've compared the results of the cluster quality from this implementation to the `kmedoids` function from `Clustering.jl` as well as the `pam` function from R's `cluster` package. To compare the quality of the clusters, clustering was performed 1,000 times on randomly-generated matrices of different sizes (`m` × `n`) and values of `k`. At each iteration, the mean silhouette score was computed and stored. Finally, the mean of all 1,000 mean silhouette scores was computed:
+I've compared the results of the cluster quality from this implementation to the `kmedoids` function from `Clustering.jl` as well as the `pam` function from R's `cluster` package. To compare the quality of the clusters, clustering was performed 1,000 times on randomly-generated matrices of different sizes (`m` × `n`) and values of `k`. At each iteration, the mean silhouette score was computed and stored. Finally, the mean of all 1,000 mean silhouette scores was computed (higher values represent better separation of clusters):
 
 ![1](https://github.com/mthelm85/PAM.jl/blob/main/img/k2m2n10.png?raw=true)
 
@@ -52,7 +52,7 @@ I've compared the results of the cluster quality from this implementation to the
 ![4](https://github.com/mthelm85/PAM.jl/blob/main/img/k25m20n400.png?raw=true)
 
 
-R's `cluster` package provides the best results across all values tested while PAM.jl provides the second-best results. The performance of Clustering.jl is far better than either the R package or PAM.jl but clustering quality is significantly worse at higher values of `k` with higher dimensionsal and larger data sets (at least when generated randomly).
+R's `cluster` package provides the best results across all values tested while `PAM.jl` provides the second-best results. It should be noted, however, that the performance of `Clustering.jl` is far better than either the R package or `PAM.jl` but clustering quality is significantly worse at higher values of `k` with higher dimensionsal and larger data sets (at least when generated randomly).
 
 The comparisons were generated with the following code:
 
