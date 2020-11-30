@@ -37,6 +37,20 @@ results = pam(D,k)
 (medoids = [79, 8, 113], assignments = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2  …  3, 3, 1, 3, 3, 3, 3, 3, 3, 1])
 ```
 
+To visualize:
+
+```julia
+scatter(
+    iris[:,3],
+    iris[:,4],
+    legend=false,
+    group=results.assignments,
+    xlabel="Petal Length",
+    ylabel="Petal Width",
+    title="Iris Species"
+)
+```
+
 ![iris](https://github.com/mthelm85/PAM.jl/blob/main/img/iris.png?raw=true)
 
 ### Cluster Quality Comparison
