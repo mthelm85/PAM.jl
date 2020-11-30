@@ -22,17 +22,21 @@ pam(D::Array, k::Int)
 
 ```julia
 using Distances
+using RDatasets
 
-X = rand(2, 10)
-D = pairwise(Euclidean(), X, dims=2)
-k = 2
+iris = dataset("datasets", "iris")
+X = Matrix(iris[:,1:4])
+D = pairwise(Euclidean(), X, dims=1)
+k = 3
 
 results = pam(D,k)
 
 # Output:
 
-(medoids = [8, 2], assignments = [2, 2, 2, 2, 2, 1, 1, 1, 1, 1])
+(medoids = [79, 8, 113], assignments = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2  …  3, 3, 1, 3, 3, 3, 3, 3, 3, 1])
 ```
+
+![iris]((https://github.com/mthelm85/PAM.jl/blob/main/img/iris.png?raw=true))
 
 ### Cluster Quality Comparison
 
