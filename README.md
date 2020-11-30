@@ -36,7 +36,7 @@ results = pam(D,k)
 (medoids = [79, 8, 113], assignments = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2  …  3, 3, 1, 3, 3, 3, 3, 3, 3, 1])
 ```
 
-![iris]((https://github.com/mthelm85/PAM.jl/blob/main/img/iris.png?raw=true))
+![iris](https://github.com/mthelm85/PAM.jl/blob/main/img/iris.png?raw=true)
 
 ### Cluster Quality Comparison
 
