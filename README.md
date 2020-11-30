@@ -82,7 +82,6 @@ bar(
     [mean(pamjl),mean(rpam),mean(clusteringjl)],
     fillalpha=0.8,
     color=:orange,
-    # xlabel="Package",
     ylabel="Mean of mean silhouette scores",
     legend=false,
     title="k = $clusters, X = $m × $n",
