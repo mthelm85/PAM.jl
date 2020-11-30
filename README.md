@@ -22,6 +22,7 @@ pam(D::Array, k::Int)
 
 ```julia
 using Distances
+using PAM
 using RDatasets
 
 iris = dataset("datasets", "iris")
