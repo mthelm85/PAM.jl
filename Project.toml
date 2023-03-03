@@ -4,6 +4,7 @@ authors = ["Matt Helm <mthelm85@gmail.com> and contributors"]
 version = "0.1.0"
 
 [compat]
+BenchmarkTools = "0.5"
 julia = "1"
 
 [extras]
